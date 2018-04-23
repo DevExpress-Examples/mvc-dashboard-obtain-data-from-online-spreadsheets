@@ -1,0 +1,46 @@
+﻿@using DevExpress.SpreadsheetSource
+@{
+    ViewBag.Title = "Choose sheet";
+    string fileId = ViewBag.FileID;
+    string[] sheets = (string[])ViewBag.Sheets;
+    string[] tables = (string[])ViewBag.Tables;
+    IDefinedName[] ranges = (IDefinedName[])ViewBag.Ranges;
+}
+
+<div style="padding: 10px" class="col-sm-6">
+    <h1>Select worksheet, table or range<br /> <small>Select the required worksheet, table or defined name referring to the specified range.</small></h1>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#worksheets">Worksheets</a></li>
+        <li><a data-toggle="tab" href="#tables">Tables</a></li>
+        <li><a data-toggle="tab" href="#ranges">Named Ranges</a></li>
+    </ul>
+
+
+    <div class="tab-content">
+        <div id="worksheets" class="tab-pane fade in active">
+            <h3>Worksheets</h3>
+            <div class="list-group">
+                @foreach(string sheet in sheets) {
+                    @Html.ActionLink(sheet, "AddDataSource", new { id = fileId, sheetId = sheet }, new { @class = "list-group-item" })                    
+                }
+            </div>
+        </div>
+        <div id="tables" class="tab-pane fade">
+            <h2>Tables</h2>
+            <div class="list-group">
+                @foreach(string sheet in tables) {
+                    @Html.ActionLink(sheet, "AddDataSource", new { id = fileId, tableId = sheet }, new { @class = "list-group-item" })
+                }
+            </div>
+        </div>
+        <div id="ranges" class="tab-pane fade">
+            <h3>Named Ranges</h3>
+            <div class="list-group">
+                @foreach(IDefinedName range in ranges) {
+                    @Html.ActionLink(range.Name, "AddDataSource", new { id = fileId, rangeId = range.Name, scope = range.Scope }, new { @class = "list-group-item" })
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+@using DevExpress.DashboardWeb
+@using GoogleApi
+
+<div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: #eee">
+    @if(Session["access_token"] == null || GoogleOAuth.ValidateToken(Session["access_token"].ToString()).Error != null) {
+        using(Html.BeginForm("SignInGoogle", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get)) {
+            <input type="submit" value="Sign in GoogleDrive" class="btn btn-primary btn-dx"/>
+        }
+    } else {
+        using(Html.BeginForm("ChooseFile", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get)) {
+            <input type="submit" value="Add New ExcelDataSource" class="btn btn-primary btn-dx" />
+            <div style="position: absolute; left: 0; top: 54px; right: 0; bottom: 0; border-top: 2px solid #aaa; ">
+                @Html.DevExpress().Dashboard(settings => {
+               settings.Name = "Dashboard";
+               settings.WorkingMode = WorkingMode.Designer;
+               settings.Width = Unit.Percentage(100);
+               settings.Height = Unit.Percentage(100);
+               settings.ClientSideEvents.BeforeRender = "onBeforeRender";
+           }).GetHtml()
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+
+    
+    @Html.DevExpress().GetStyleSheets(
+        new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Editors },
+        new StyleSheet { ExtensionSuite = ExtensionSuite.Dashboard }
+    )
+    @Html.DevExpress().GetScripts( 
+        new Script { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
+        new Script { ExtensionSuite = ExtensionSuite.Editors },
+        new Script { ExtensionSuite = ExtensionSuite.Dashboard }
+    )
+    <script type="text/javascript">
+        function onBeforeRender(sender) {
+            var control = sender.getDashboardControl();
+            control.registerExtension(new DevExpress.Dashboard.DashboardPanelExtension(control));
+        }
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <style>
+        .btn-dx {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    @Html.DevExpress().Splitter(settings => {
+        settings.Name = "MainSplitter";
+        settings.AllowResize = false;
+        settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
+        settings.FullscreenMode = true;
+        settings.SeparatorVisible = false;
+        settings.Styles.Pane.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
+        settings.Styles.Pane.Paddings.Padding = System.Web.UI.WebControls.Unit.Pixel(0);
+
+        settings.Panes.Add(pane => {
+            pane.Name = "Content";
+            pane.PaneStyle.CssClass = "mainContentPane";
+            pane.MinSize = System.Web.UI.WebControls.Unit.Pixel(375);
+            pane.PaneStyle.BackColor = System.Drawing.Color.White;
+            pane.PaneStyle.BorderBottom.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(1);
+            pane.SetContent(RenderBody().ToHtmlString());
+        });
+    }).GetHtml()
+</body>
+</html>

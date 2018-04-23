@@ -1,0 +1,22 @@
+﻿@using GoogleApi
+@{
+    ViewBag.Title = "Choose spreadsheet";
+    GoogleFile[] files = (GoogleFile[])ViewBag.Files;
+}
+<div style="padding: 10px" class="col-sm-4">
+    <h1>Choose spreadsheet</h1>
+
+    <form class="form-inline" style="padding-bottom: 10px">
+        @using(Html.BeginForm("ChooseSheetByUrl", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get)) {
+            <input type="text" name="url" id="url" class="form-control"  />
+            <input type="submit" name="Bind to URL" value="Bind to URL" class="btn btn-default" placeholder="Enter URL" />
+        }
+    </form>
+    <div class="list-group">
+        @foreach(GoogleFile file in files) {
+            @Html.ActionLink(file.Name, "ChooseSheet", new { id = file.Id }, new { @class = "list-group-item" })
+        }
+    </div>
+
+</div>
+

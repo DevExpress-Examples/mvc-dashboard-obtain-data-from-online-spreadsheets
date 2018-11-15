@@ -1,3 +1,13 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [DashboardConfig.cs](./CS/MvcDashboard/App_Start/DashboardConfig.cs)
+* [HomeController.cs](./CS/MvcDashboard/Controllers/HomeController.cs)
+* [ChooseFile.cshtml](./CS/MvcDashboard/Views/Home/ChooseFile.cshtml)
+* [ChooseSheet.cshtml](./CS/MvcDashboard/Views/Home/ChooseSheet.cshtml)
+* [Index.cshtml](./CS/MvcDashboard/Views/Home/Index.cshtml)
+* [Web.config](./CS/MvcDashboard/Web.config)
+<!-- default file list end -->
 # ASP.NET MVC Dashboard - How to obtain data for Web Dashboard from online spreadsheets
 
 

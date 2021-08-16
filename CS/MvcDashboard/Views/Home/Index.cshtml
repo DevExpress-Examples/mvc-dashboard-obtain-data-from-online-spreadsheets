@@ -1,8 +1,9 @@
 @using DevExpress.DashboardWeb
 @using GoogleApi
+@using DXWebApplication7
 
 <div style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: #eee">
-    @if(Session["access_token"] == null || GoogleOAuth.ValidateToken(Session["access_token"].ToString()).Error != null) {
+    @if(DashboardConfig.AccessToken == null || GoogleOAuth.ValidateToken(DashboardConfig.AccessToken).Error != null) {
         using(Html.BeginForm("SignInGoogle", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Get)) {
             <input type="submit" value="Sign in GoogleDrive" class="btn btn-primary btn-dx"/>
         }

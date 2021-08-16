@@ -8,6 +8,8 @@ using System.Web.Hosting;
 using DevExpress.DataAccess.Excel;
 using DevExpress.DashboardCommon;
 using GoogleApi;
+using System.Collections.Generic;
+using System.Web;
 
 namespace DXWebApplication7 {
     public static class DashboardConfig {
@@ -17,7 +19,14 @@ namespace DXWebApplication7 {
 
         public static ClientAuthenticationInfo ClientInfo { get { return clientInfo; } }
 
-        public static string AccessToken { get; set; }
+        public static string AccessToken {
+            get {
+                return (string)HttpContext.Current.Session["AccessToken"];
+            }
+            set {
+                HttpContext.Current.Session["AccessToken"] = value;
+            }
+        }
 
         static DashboardConfig() {
             clientInfo = new GoogleClientAuthenticationInfo {
@@ -41,8 +50,8 @@ namespace DXWebApplication7 {
         }
 
         static void DefaultOnExcelDataSourceBeforeFill(object sender, ExcelDataSourceBeforeFillWebEventArgs args) {
-            using(var googleSheets = new GoogleSheetsService(ClientInfo, AccessToken)) {
-                Stream fileStream = googleSheets.GetFileStream(args.FileName);
+            using (var googleSheets = new GoogleSheetsService(ClientInfo, AccessToken)) {
+                Stream fileStream = googleSheets.GetFileStream(args.DataSourceConnectionName);
                 args.Stream = fileStream;
                 args.StreamDocumentFormat = ExcelDocumentFormat.Xlsx;
             }

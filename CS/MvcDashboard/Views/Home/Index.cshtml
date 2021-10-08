@@ -13,6 +13,7 @@
             <div style="position: absolute; left: 0; top: 54px; right: 0; bottom: 0; border-top: 2px solid #aaa; ">
                 @Html.DevExpress().Dashboard(settings => {
                settings.Name = "Dashboard";
+               settings.ControllerName = "DefaultDashboard";
                settings.WorkingMode = WorkingMode.Designer;
                settings.Width = Unit.Percentage(100);
                settings.Height = Unit.Percentage(100);

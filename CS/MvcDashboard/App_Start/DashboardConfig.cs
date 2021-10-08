@@ -37,7 +37,7 @@ namespace DXWebApplication7 {
         }
 
         public static void RegisterService(RouteCollection routes) {
-            routes.MapDashboardRoute("dashboardControl");
+            routes.MapDashboardRoute("dashboardControl","DefaultDashboard");
 
             DashboardFileStorage dashboardFileStorage = new DashboardFileStorage("~/App_Data/Dashboards");
             DashboardConfigurator.Default.SetDashboardStorage(dashboardFileStorage);

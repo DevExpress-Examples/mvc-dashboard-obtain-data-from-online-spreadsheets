@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <Title Text="New Dashboard" />
+  <DataSources>
+    <ExcelDataSource Name="Google Sheets Source 1" ComponentName="excelDataSource1" ConnectionName="1iD5uplFVr4095nDMMNT8rhSjmXA4KDHZCvcSpW-Z5A4">
+      <Options Type="DevExpress.DataAccess.Excel.ExcelSourceOptions" SkipEmptyRows="true" UseFirstRowAsHeader="true" SkipHiddenColumns="true" SkipHiddenRows="true">
+        <ImportSettings Type="DevExpress.DataAccess.Excel.ExcelWorksheetSettings" WorksheetName="Лист1" />
+      </Options>
+      <Schema />
+      <ResultSchema />
+    </ExcelDataSource>
+  </DataSources>
+</Dashboard>

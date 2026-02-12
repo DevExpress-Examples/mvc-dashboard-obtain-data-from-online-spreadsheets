@@ -26,7 +26,7 @@ Note that this sample project is a prototype that shows the possibility of 
 * [Index.cshtml](./CS/MvcDashboard/Views/Home/Index.cshtml)
 * [Web.config](./CS/MvcDashboard/Web.config)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=mvc-dashboard-obtain-data-from-online-spreadsheets&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=mvc-dashboard-obtain-data-from-online-spreadsheets&~~~was_helpful=no)
 
